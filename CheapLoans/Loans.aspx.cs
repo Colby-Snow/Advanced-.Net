@@ -13,5 +13,10 @@ namespace CheapLoans
         {
 
         }
+
+        protected void SubmitForm(object sender, EventArgs e)
+        {
+            NameLB.Text = "Wrong Name";
+        }
     }
 }
