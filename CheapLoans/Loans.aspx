@@ -11,9 +11,10 @@
         <div>
             <label>GET CHEAP LOANS NOW!!!!!</label><br/>
             <asp:Label runat="server" ID ="NameLB" Text="Name: "/><asp:TextBox runat="server" ID="NameTB"/><br />
+            <asp:RequiredFieldValidator ID="RequiredNameValidator" runat="server" ErrorMessage="Required"></asp:RequiredFieldValidator>
             <asp:Label runat="server" ID ="LoanAmtLB" Text="Loan Amount: "/><asp:TextBox runat="server" ID="LoanAmtTB"/><br />
             <asp:Button Text="Submit" runat="server" ID="Submit" OnClick="SubmitForm"/>
-            <asp:SqlDataSource runat="server" ID="SqlDataSource1" />
+            <asp:SqlDataSource runat="server" ID="LoansDataSource" ConnectionString="LoansConnectionString"/>
         </div>
     </form>
 </body>
