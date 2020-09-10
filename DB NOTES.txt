@@ -1,0 +1,25 @@
+Stored Procedures are written in TSQL
+
+Example
+Create Procedure [dbo].[ProcFishOver40]
+
+AS
+     SELECT Name, Cost
+     FROM Fish
+     WHERE Cost > 40
+
+RETURN 0
+
+Example with Variables
+Create Procedure [dbo].[ProcFishOver40]
+     @pCost int
+AS
+     SELECT Name, Cost
+     FROM Fish
+     WHERE Cost > @pCost
+
+RETURN 0
+
+Example with defaults
+@pCost int = 5
+Will default if nothing is specified to the procedure.
