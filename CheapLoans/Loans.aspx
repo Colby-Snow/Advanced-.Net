@@ -18,8 +18,12 @@
             
             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Required" ControlToValidate="AnnualIntTB" ForeColor="Red"></asp:RequiredFieldValidator>            
             <asp:Label runat="server" ID ="AnnualIntLB" Text="Annual Interest Rate: "/><asp:TextBox runat="server" ID="AnnualIntTB"/><br />
+
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Required" ControlToValidate="NumPaymentsTB" ForeColor="Red"></asp:RequiredFieldValidator>            
+            <asp:Label runat="server" ID ="NumPaymentsLB" Text="Number of Payments: "/><asp:TextBox runat="server" ID="NumPaymentsTB"/><br />
             
             <asp:Button Text="Submit" runat="server" ID="Submit" OnClick="SubmitForm"/>
+            <asp:Button Text="Display" runat="server" ID="Display" OnClick="DisplayPage" />
             <asp:SqlDataSource runat="server" ID="LoansDataSource" ConnectionString="LoansConnectionString"/>
         </div>
     </form>
