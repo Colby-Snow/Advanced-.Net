@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -16,7 +17,15 @@ namespace CheapLoans
 
         protected void SubmitForm(object sender, EventArgs e)
         {
-            NameLB.Text = "Wrong Name";
-        }
+            double loanAmt = Convert.ToDouble(LoanAmtTB.Text);
+            double annualInt = Convert.ToDouble(AnnualIntTB.Text);
+            double numPayments = Convert.ToDouble(NumPaymentsTB.Text);
+
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=CheapLoans;Integrated Security=True;";
+
+            String insertQuery = 
+
+         }
     }
 }
