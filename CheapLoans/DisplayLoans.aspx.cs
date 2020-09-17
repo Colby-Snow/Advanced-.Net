@@ -14,6 +14,5 @@ namespace CheapLoans
         {
 
         }
-        double montlyPayment = Financial.Pmt(annualInt, numPayments, loanAmt);
     }
 }

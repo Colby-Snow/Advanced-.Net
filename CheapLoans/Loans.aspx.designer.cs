@@ -15,13 +15,13 @@ namespace CheapLoans
     {
 
         /// <summary>
-        /// form1 control.
+        /// SuccessLB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label SuccessLB;
 
         /// <summary>
         /// RequiredNameValidator control.
@@ -148,6 +148,15 @@ namespace CheapLoans
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Display;
+
+        /// <summary>
+        /// MonthlyPaymentLB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label MonthlyPaymentLB;
 
         /// <summary>
         /// LoansDataSource control.
