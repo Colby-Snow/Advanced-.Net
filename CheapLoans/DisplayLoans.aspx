@@ -12,6 +12,6 @@
                 <asp:BoundField DataField="NumPayments" HeaderText="NumPayments" SortExpression="NumPayments" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoansConnectionString %>" SelectCommand="SELECT * FROM [Loan]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoansConnectionString %>" SelectCommand="SelectAllProcedure" SelectCommandType="StoredProcedure"></asp:SqlDataSource>
     </div>
 </asp:Content>

@@ -23,11 +23,11 @@ namespace CheapLoans
             double loanAmt = Convert.ToDouble(LoanAmtTB.Text);
             double annualInt = Convert.ToDouble(AnnualIntTB.Text);
             double numPayments = Convert.ToDouble(NumPaymentsTB.Text);
-            String insertQuery = "INSERT INTO Loan (CustName, LoanAmount, AnnualIntRate, NumPayments) VALUES (@pName, @pLoanAmt , @pAnnualInt, @pNumPayments)";
+           
             SqlConnection connectionString = new SqlConnection(ConfigurationManager.ConnectionStrings["LoansConnectionString"].ConnectionString);
             connectionString.Open();
 
-            SqlCommand cmd = new SqlCommand(insertQuery, connectionString);
+            SqlCommand cmd = new SqlCommand("InsertProcedure", connectionString) { CommandType = System.Data.CommandType.StoredProcedure};
 
             cmd.Parameters.AddWithValue("@pName", custName);
             cmd.Parameters.AddWithValue("@pLoanAmt", loanAmt.ToString());
