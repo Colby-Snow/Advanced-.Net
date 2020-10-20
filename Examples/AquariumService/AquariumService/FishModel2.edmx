@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Fish">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Cost" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Type" Type="char" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="FishType">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Type" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Fish_Fish_Type">
+          <End Role="FishType" Type="Self.FishType" Multiplicity="0..1" />
+          <End Role="Fish" Type="Self.Fish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishType">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="Fish">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Model2StoreContainer">
+          <EntitySet Name="Fish" EntityType="Self.Fish" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FishType" EntityType="Self.FishType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Fish_Fish_Type" Association="Self.FK_Fish_Fish_Type">
+            <End Role="FishType" EntitySet="FishType" />
+            <End Role="Fish" EntitySet="Fish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Fish">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cost" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Type" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="FishType" Relationship="Self.FK_Fish_Fish_Type" FromRole="Fish" ToRole="FishType" />
+        </EntityType>
+        <EntityType Name="FishType">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Type" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Fish" Relationship="Self.FK_Fish_Fish_Type" FromRole="FishType" ToRole="Fish" />
+        </EntityType>
+        <Association Name="FK_Fish_Fish_Type">
+          <End Role="FishType" Type="Self.FishType" Multiplicity="0..1" />
+          <End Role="Fish" Type="Self.Fish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FishType">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="Fish">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Fish" EntityType="Self.Fish" />
+          <EntitySet Name="FishTypes" EntityType="Self.FishType" />
+          <AssociationSet Name="FK_Fish_Fish_Type" Association="Self.FK_Fish_Fish_Type">
+            <End Role="FishType" EntitySet="FishTypes" />
+            <End Role="Fish" EntitySet="Fish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Model2StoreContainer" CdmEntityContainer="Entities2">
+          <EntitySetMapping Name="Fish">
+            <EntityTypeMapping TypeName="Model2.Fish">
+              <MappingFragment StoreEntitySet="Fish">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FishTypes">
+            <EntityTypeMapping TypeName="Model2.FishType">
+              <MappingFragment StoreEntitySet="FishType">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
